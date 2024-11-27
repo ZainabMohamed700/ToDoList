@@ -110,4 +110,27 @@ for (let i = 0; i < filterButtons.length; i++) {
      displayList();
     });
 }
+function searchTasks() {
+    const searchInput = document.getElementById('search-input').value.toLowerCase();
+    const filteredTasks = containertask.filter(todo =>
+        todo.name.toLowerCase().includes(searchInput)
+    );
+
+    // تحديث عرض القائمة بالمطابقات فقط
+    let data = '';
+    for (let i = 0; i < filteredTasks.length; i++) {
+        data += `
+        <li class="item ${filteredTasks[i].completed ? 'checked' : ''}">
+        <input type="checkbox" class="checkbox" ${filteredTasks[i].completed ? 'checked' : ''} onchange="el(${i})">
+        ${filteredTasks[i].name}
+        <div class="mrt">
+        <button class="updata-button" onclick="setdata(${i})"><i class="fa-solid fa-pen-to-square"></i></button>
+        <button class="delete-button" onclick="del(${i})"><i class="fa fa-trash" aria-hidden="true"></i></button>
+        </div>
+        </li>
+        `;
+    }
+    todoItemsList.innerHTML = data;
+}
+
 
