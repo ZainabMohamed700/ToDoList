@@ -152,14 +152,38 @@ i{
 }
 .search-bar {
   margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 #search-input {
   width: 100%;
-  padding: 10px;
+  max-width: 400px;
+  padding: 12px 40px 12px 15px; /* لإضافة مساحة لرمز البحث */
   font-size: 16px;
   border: 2px solid #ddd;
-  border-radius: 5px;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+#search-input:focus {
+  border-color: #08337c; /* لون أكثر وضوحًا عند التركيز */
+  box-shadow: 0 4px 12px rgba(8, 51, 124, 0.3);
+}
+
+.search-bar::before {
+  content: '🔍';
+  position: absolute;
+  right: 15px; /* مكان الرمز */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #ddd;
+  pointer-events: none;
+}
+
 
   
